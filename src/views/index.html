@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html ng-app="omsApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>HKNTV Operation Monitoring System</title>
+    <link rel="stylesheet" href="../../libs/bootstrap-3.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../libs/font-awesome-4.0.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../libs/theme/skin-blue.css"/>
+    <link rel="stylesheet" href="../styles/oms.css"/>
+</head>
+
+<body>
+<div id="indexWrapper" ng-controller="ptController">
+    <!--bootstrap 导航条-->
+    <nav class="navbar themeColor">
+        <!--界面缩小时菜单缩小并变为一列-->
+        <div class="container-fluid">
+            <button type="button" class="navbar-toggle collapse" data-toggle="collapse" data-target="#oms-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <strong class="themeColor hkntvLogo">HKNTV</strong>
+                <small class="themeColor omsVersion" style="margin-left: 10px;font-style: italic;">OMS <span
+                        style="font-style: italic;">Dev 1.0.9</span></small>
+            </a>
+        </div>
+
+        <!--顶部导航条-->
+        <div class="collapse navbar-collapse" id="oms-navbar">
+            <!--导航菜单-->
+            <ul class="nav navbar-nav">
+                <li class="topMenu" ng-class="{'active':$index===0}" ng-repeat="menu in menus" ng-click="changeTopMenu($index);topMenuLocation(menu.url)"><a href="#" class="themeColor menuFont">{{menu.name}}</a></li>
+            </ul>
+
+            <!--用户下拉菜单-->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle themeColor" data-toggle="dropdown"><img
+                            alt="Avatar" src="../images/jabriel.jpg"/><span></span> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Messages</a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:void(0)" ng-click="">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--主页面-->
+    <div class="main" style="display: table">
+        <!--左边子菜单导航-->
+        <div class="leftNavBar" style="display: table-cell">
+            <div class="content" style="padding: 0;">
+                <div class="cl-sidebar sideMenuData" style="display: block;width: 234px;">
+                    <div class="cl-toggle"><i class="fa fa-bars"></i></div>
+                    <div class="cl-navblock">
+                        <div class="menu-space ">
+                            <div class="content sideMenuDataUl" style="padding: 0;">
+                                <ul class="cl-vnavigation " style="list-style: none">
+                                    <li class="firstLayer" ng-class="{'active':$index===0}"
+                                        ng-repeat="menu in currentMenu.firstLayer"
+                                        ng-click="changeMenu($index);firstLayerLocation(menu.url)"><a
+                                            href="javascript:void(0)"><i class="{{menu.icon}}"
+                                                                         style="font-size: 14px;"></i><span>{{menu.name}}</span></a>
+                                        <ul class="sub-menu" ng-if="menu.secondLayer.length>0">
+                                            <li ng-repeat="subMenu in menu.secondLayer track by $index"><a
+                                                    ng-href="{{subMenu.url}}">{{subMenu.name}}</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="text-right collapse-button sideMenuBtn"
+                             style="padding:7px 9px;width: 234px;">
+                            <button class="btn btn-default" collapse-side-menu>
+                                <i style="color:#fff;" ng-class="{true:'fa fa-angle-left',false:'fa fa-angle-right'}[isSideMenuButtonLeft]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div to-dom> &nbsp;</div>
+
+            </div>
+        </div>
+        <!--页面内容（替换部分）-->
+        <div class="content" style="display: table-cell">
+
+            <div>
+                <!--<blockquote>-->
+                &nbsp;&nbsp;&nbsp;&nbsp; Here is a long quotation here is a long quotation here is a long quotation<br>
+                22here is a long quotation here is a long quotation here is a long quotation<br>
+                33here is a long quotation here is a long quotation here is a long quotation.<br>
+            <!--</blockquote>-->
+            </div>
+
+            <div to-dom> &nbsp;</div>
+
+        </div>
+
+
+            <div ng-view>
+
+
+            </div>
+
+    </div>
+
+</div>
+
+<script src="../../libs/jquery-1.11.0/jquery-1.11.0.min.js"></script>
+<script src="../../libs/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+
+<script src="../../libs/angular-1.2.19/angular.js"></script>
+<!--<script src="../../libs/angular-1.3.0/angular.js"></script>-->
+<script src="../../libs/angular-1.2.19/angular-route.min.js"></script>
+<script src="../../libs/angular-1.2.19/angular-resource.min.js"></script>
+
+<script src="../scripts/apps/app.js"></script>
+<script src="../scripts/coreScripts/coreController.js"></script>
+<script src="../scripts/coreScripts/coreService.js"></script>
+<script src="../scripts/coreScripts/coreDirective.js"></script>
+<script src="../scripts/coreScripts/coreFilter.js"></script>
+
+<script type="text/javascript">
+    var txt="Hello World!"
+    var txt="Nice to meet you !";
+    //原大小
+    document.write("<p>"+txt+"</p>");
+    //变大
+    document.write("<p>big:"+txt.big()+"</p>");
+    //变小
+    document.write("<p>small:"+txt.small()+"</p>");
+    //轮廓清晰的
+    document.write("<p>Bold:"+txt.bold()+"</p>");
+    //斜体;斜体字
+    document.write("<p>Italic:"+txt.italics()+"</p>");
+    //闪亮,闪烁
+    document.write("<p>Blink:"+txt.blink()+"(does not work in IE)</p>");
+    //固定的
+    document.write("<p>Fixed:"+txt.fixed()+"</p>");
+    //中划线
+    document.write("<p>Strike:"+txt.strike()+"</p>");
+    //font 字型字体
+    document.write("<p>Fontcolor:"+txt.fontcolor("red")+"（默认为绿色）</p>");
+    //字体大小
+    document.write("<p>Fontsize:"+txt.fontsize(16)+"</p>");
+    //变小写
+    document.write("<p>toLowerCase:"+txt.toLowerCase()+"</p>");
+    //变大写
+    document.write("<p>toUpperCase:"+txt.toUpperCase()+"</p>");
+    //下面的
+    document.write("<p>Subscript: " + txt.sub() + "</p>")
+    //上面的
+    document.write("<p>Superscript: " + txt.sup() + "</p>")
+    //超链接。红色下划线
+    document.write("<p>Link: " + txt.link("http://www.111cn.net") + "</p>")
+
+</script>
+</body>
+</html>

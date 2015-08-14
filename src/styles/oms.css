@@ -1,0 +1,51 @@
+body{
+    background-color: #f0f0f0;
+}
+
+body #indexWrapper{
+    opacity: 0;
+    margin-left: -20px;
+    transition:margin-left 600ms ease, opcity 600ms
+}
+
+/*index top nav bar*/
+.themeColor{
+    background-color: #54ade9;
+    color: #fff;
+}
+
+.hkntvLogo{
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.omsVersion{
+    font-size: 12px;
+}
+
+.menuFont{
+    font-size: 15px;
+}
+
+.menuFont:hover{
+    background-color: #89d3e9;
+}
+
+
+.navbar{
+    padding-right: 25px;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.navbar .active a:focus{
+    background-color: #54ade9
+}
+
+
+/*index left nav bar*/
+.leftNavBar{
+    width:235px;
+    display: block;
+    background-color: #272930;
+}
